@@ -1,8 +1,8 @@
-## Pi Env Monitor
+# Pi Env Monitor
 
 Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a raspberrypi zero, and upload it to farmos, google spreadsheets or (and) save it locally.
 
-# Scripts:
+## Scripts:
 
 - `dht22_get_env.py`
 
@@ -54,7 +54,7 @@ Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a ra
    or
    does farmos support multiline json?
 
- # TODO:
+ ## TODO:
  - implement timestamp
  - error handling
  - logging into /var/log/
