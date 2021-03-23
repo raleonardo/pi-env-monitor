@@ -41,23 +41,22 @@ Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a ra
     ...
     ```
 
- - `data_save_local`
-
-   Saves data locally:
-   - append to a json file?
-   - append to a csv file?
-   - add to a sqlite?
-
-   or configure *_get_env to optionally save data locally?
-
-   should *_send modules suport multiline json and make several requests (one per json object)?
-   or
-   does farmos support multiline json?
 
  ## TODO:
  - implement timestamp
  - error handling
- - logging into /var/log/
- - choose licensing
- - configs as env variables? YES!! then divide the data into chunks.
- - on *_send from local file: check last written value and upload from there onwards?
+    - printing errors into stderr
+    - implement logger to /var/log/
+ - configs as env variables?
+    - Formatting the config files without spaces makes them python and bash compatible
+ - Save data locally
+    - append to a json file?
+    - append to a csv file?
+    - add to a sqlite?
+    - enable this as an optional feature? -> argparse or from config file
+    - lock the file when writing into it
+ - send/update data from local file/db
+    - does farmos support multiline json?: YES!!
+    - check last written timestamp on target (GET) and then send data newer than that
+    - then divide the data into chunks.
+
