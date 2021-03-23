@@ -12,7 +12,7 @@ import json
 
 dht22 = adafruit_dht.DHT22( getattr(board, DHT22_DATA_PIN) )
 
-for i in range (DHT22_READ_MAX_ATTEMPTS):    
+for i in range (DHT22_READ_MAX_ATTEMPTS):
     try:
         meas = {}
         meas['temperature'] = dht22.temperature
@@ -28,12 +28,9 @@ for i in range (DHT22_READ_MAX_ATTEMPTS):
         dht22.exit()
         raise error
     else:
-
-        print ( "Temperature: {0}C  Humidity: {1}%".format( meas['temperature'], meas['humidity'] ))
-        print (json.dumps(meas)) 
+        # print ( "Temperature: {0}C  Humidity: {1}%".format( meas['temperature'], meas['humidity'] ))
+        print (json.dumps(meas))
         break
-
-dht22.exit()
 
 """
 TODO:
