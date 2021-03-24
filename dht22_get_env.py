@@ -15,6 +15,7 @@ dht22 = adafruit_dht.DHT22( getattr(board, DHT22_DATA_PIN) )
 for i in range (DHT22_READ_MAX_ATTEMPTS):
     try:
         meas = {}
+        meas['timestamp']   = int(time.time())
         meas['temperature'] = dht22.temperature
         time.sleep(0.1)
         meas['humidity']    = dht22.humidity
@@ -34,6 +35,5 @@ for i in range (DHT22_READ_MAX_ATTEMPTS):
 
 """
 TODO:
-- include timespamp in json
 - optionally update a local json file
 """
