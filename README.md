@@ -9,33 +9,33 @@ Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a ra
    Gets the temperature and humidity from a `DTH22` sensor connected to the Pi's `GPIO`.
    Outputs the measured values as `JSON` format to the `STDOUT`  *including timestamp?
 
-   Configurations: *TODO: should they be in /etc/pi-env-monitor/dth22_config.py
+   Configurations: `/etc/pi-env-monitor/dth22_config.py`
    ```
    DHT22_DATA_PIN = "D4"         # Data pin in the GPIO where the DHT22 is connected
    DHT22_READ_TIMEOUT = 2        # Timeout in seconds
    DHT22_READ_MAX_ATTEMPTS = 5   #
    ```
 
- - `bme280_get_env.py`
+ - `bme280_get_env.py` NOT IMPLEMENTED!
 
     Gets the temperature, humidity and pressure from a `BME280` sensor connected to the Pi's `GPIO` (via `SPI` or `I2C`)
     Outputs the measured values as `JSON` format to the `STDOUT`
 
-    Configurations: *TODO: should they be in /etc/pi-env-monitor/dth22.conf
+    Configurations: `/etc/pi-env-monitor/dth22.conf`
     ```
     BME_CONNECTION = "spi" or "i2c" ??
     BME_CCONNECTION_PINS ??
     ...
     ```
 
- - `farmos_sensor_send.py`
+ - `farmos_sensor_send.sh`
 
-    Gets values as JSON and sends them to a FarmOS Sensor API
+    Gets Temperature and Humidity values from a DHT22 (executing `dht22_get_env.py` in the same dir) and sends them to a FarmOS Sensor API.
+    Note: This script is a first approach, and should be replaced by a python counterpart, that receives the json data in the stdin.
 
-    Configurations: *TODO: should they be in /etc/pi-env-monitor/farmos_config.py
+    Configurations: `/etc/pi-env-monitor/farmos_config.py`
     ```
     FARMOS_URL          = "https://myfarm.farmos.net"
-    FARMOS_SENSOR_NAME  = "Greenhouse Sensor"                  #*maybe not needed
     FARMOS_API_PUB_KEY  = "a40b12d245a1cf13d3a9ba521389e669"
     FARMOS_API_PRIV_KEY = "a40b12d245a1cf13d3a9ba521389e669"
     ...
@@ -43,7 +43,6 @@ Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a ra
 
 
  ## TODO:
- - implement timestamp
  - error handling
     - printing errors into stderr
     - implement logger to /var/log/
@@ -59,4 +58,4 @@ Tool to monitor environment values (Temperature, Humidity [,Pressure]) from a ra
     - does farmos support multiline json?: YES!!
     - check last written timestamp on target (GET) and then send data newer than that
     - then divide the data into chunks.
-
+ - implement BME280 on spi/i2c
